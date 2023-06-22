@@ -38,7 +38,13 @@ case $cmd in
   clean)
     source ${CMD_DIR}/__clean.sh
     ;;
-  *)
+  build)
     source ${CMD_DIR}/__compile.sh
+    ;;
+  help)
+    source ${CMD_DIR}/__help.sh
+    ;;
+  *)
+    source ${CMD_DIR}/__help.sh
     ;;
 esac
