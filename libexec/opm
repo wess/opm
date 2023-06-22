@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+export SCRIPT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+export LIBS_DIR="$SCRIPT_ROOT/libs"
+export CMD_DIR="$SCRIPT_ROOT/commands"
+export PROJECT_DIR="$(dirname "$SCRIPT_ROOT")"
+export SOURCE_DIR="$PROJECT_DIR/src"
+export PATHS_DIR="$SOURCE_DIR/paths"
+export SCHEMAS_DIR="$SOURCE_DIR/schemas"
+export OUTPUT_FILE="$PROJECT_DIR/openapi.yaml"
+
+# Check if yq and jq are installed, if not, install them
+if ! command -v yq &> /dev/null
+then
+  echo "yq could not be found, installing..."
+  brew install yq
+fi
+
+if ! command -v jq &> /dev/null
+then
+  echo "jq could not be found, installing..."
+  brew install jq
+fi
+
+source ${LIBS_DIR}/__echo.sh
+source ${LIBS_DIR}/__define.sh
+
+
+cmd=$1
+shift
+
+echo $cmd | echo
+
+case $cmd in
+  init)
+    source ${CMD_DIR}/__init.sh
+    ;;
+  clean)
+    source ${CMD_DIR}/__clean.sh
+    ;;
+  *)
+    source ${CMD_DIR}/__compile.sh
+    ;;
+esac
