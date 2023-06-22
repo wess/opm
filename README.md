@@ -11,11 +11,16 @@ $ brew install opm
 
 ## Usage:
 
+- help : Shows available commands.
+- init : Create a new project file.
+- build : Build the openapi.yaml file.
+- clean : Clean the openapi.yaml file.
+
 ```sh
 $ mkdir myspec
 $ cd myspec
 $ opm init
-$ opm
+$ opm build
 $ cat openapi.yaml
 ```
 
