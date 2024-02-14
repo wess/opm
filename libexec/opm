@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 
-export SCRIPT_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+SOURCE=${BASH_SOURCE[0]}
+
+while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+
+export SCRIPT_ROOT=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 export LIBS_DIR="$SCRIPT_ROOT/libs"
 export CMD_DIR="$SCRIPT_ROOT/commands"
-export PROJECT_DIR="$(dirname "$SCRIPT_ROOT")"
+export CUR_DIR="$(pwd)"
+export PROJECT_DIR="$(dirname "$CUR_DIR")"
 export SOURCE_DIR="$PROJECT_DIR/src"
 export PATHS_DIR="$SOURCE_DIR/paths"
 export SCHEMAS_DIR="$SOURCE_DIR/schemas"
 export OUTPUT_FILE="$PROJECT_DIR/openapi.yaml"
+
+echo "SCRIPT_ROOT: $SCRIPT_ROOT"
 
 # Check if yq and jq are installed, if not, install them
 if ! command -v yq &> /dev/null
