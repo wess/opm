@@ -3,7 +3,9 @@
   "description": "OpenAPI Project Manager",
   "version": "0.0.1",
   "module": "src/index.ts",
-  "bin": "dist/opm",
+  "bin": {
+    "opm": "./dist/opm"
+  },
   "type": "module",
   "scripts": {
     "clean": "rm -rf dist",
