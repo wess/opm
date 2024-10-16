@@ -9,7 +9,6 @@ OPM is a CLI tool designed to help manage OpenAPI projects in a folder-friendly 
 - Build OpenAPI specifications
 - Serve mock REST/Web API based on OpenAPI specifications
 - Supports both npm and Bun package managers
-- Package and upload releases to npm or Homebrew
 
 ## Installation
 
