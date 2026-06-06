@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OPM — OpenAPI Project Manager</title>
+    <meta
+      name="description"
+      content="OPM is a CLI that manages OpenAPI projects in a folder-friendly, structured way. Initialize a project layout, build a single openapi.yaml, and serve a mock REST API from your spec."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>:root{--accent:#2dd4bf;--accent2:#0ea5e9}</style>
+  </head>
+  <body>
+    <!-- nav -->
+    <nav class="nav">
+      <div class="wrap">
+        <a class="brand" href="index.html"><span class="mark">⬡</span> OPM</a>
+        <button class="navtoggle" aria-label="Menu" data-nav>☰</button>
+        <div class="navlinks" data-navlinks>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="docs.html">Docs</a>
+          <a class="btn primary" href="https://github.com/wess/opm">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <header class="hero">
+      <div class="wrap">
+        <span class="pill"><span class="dot"></span> CLI · OpenAPI 3.0 · npm &amp; Bun</span>
+        <h1>Manage OpenAPI projects <span class="accent">like a codebase</span>.</h1>
+        <p class="lead">
+          OPM is a command-line tool that keeps your API spec in a folder-friendly, structured layout. Split paths,
+          schemas, and security schemes into their own files — then build one <code>openapi.yaml</code> and serve a mock
+          API straight from it.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#start">Get started</a>
+          <a class="btn ghost" href="https://github.com/wess/opm">View on GitHub →</a>
+        </div>
+
+        <!-- terminal mockup -->
+        <div class="mock">
+          <div class="bar">
+            <span class="hash">$</span><span>opm</span>
+            <span class="muted" style="font-size: 13px">· OpenAPI Project Manager</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="body">
+            <div class="msg">
+              <div class="av" style="background: linear-gradient(135deg, #2dd4bf, #0ea5e9)">⬡</div>
+              <div>
+                <div class="who">init <small>scaffold</small></div>
+                <div class="txt">Project "petstore" initialized with folder structure and example files.</div>
+              </div>
+            </div>
+            <div class="msg">
+              <div class="av" style="background: linear-gradient(135deg, #2dd4bf, #0ea5e9)">⬡</div>
+              <div>
+                <div class="who">build <small>compile</small></div>
+                <div class="txt">openapi.yaml built successfully.</div>
+              </div>
+            </div>
+            <div class="msg">
+              <div class="av" style="background: linear-gradient(135deg, #2dd4bf, #0ea5e9)">⬡</div>
+              <div>
+                <div class="who">serve <small>mock</small></div>
+                <div class="txt">Mock REST API listening on <span class="men">http://localhost:3000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- features -->
+    <section class="block" id="features">
+      <div class="wrap">
+        <div class="eyebrow">Features</div>
+        <h2>A spec that lives in files, not one giant document.</h2>
+        <p class="sub">
+          Everything you need to author, assemble, and exercise an OpenAPI spec — from the comfort of your editor.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <div class="ico">📁</div>
+            <h3>Structured projects</h3>
+            <p>Initialize a folder-friendly layout with separate directories for paths, schemas, and security schemes.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🚀</div>
+            <h3>One-command init</h3>
+            <p>Scaffold a new project with example <code>info.yaml</code>, a sample path, schema, and bearer security scheme.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🔧</div>
+            <h3>Build the spec</h3>
+            <p>Assemble every file in your project into a single, final <code>openapi.yaml</code> ready to ship or import.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🧪</div>
+            <h3>Mock server</h3>
+            <p>Serve a mock REST / Web API from your spec so clients can develop against it before the backend exists.</p>
+          </div>
+          <div class="card">
+            <div class="ico">📦</div>
+            <h3>npm &amp; Bun</h3>
+            <p>Install and run with either package manager — the same CLI, however your toolchain is set up.</p>
+          </div>
+          <div class="card">
+            <div class="ico">📐</div>
+            <h3>OpenAPI 3.0</h3>
+            <p>Authoring around the OpenAPI 3.0 standard, so the output drops straight into the tools you already use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- how it works -->
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="eyebrow">How it works</div>
+        <h2>Three commands, start to mock.</h2>
+        <p class="sub">
+          Your spec stays split into small, reviewable files. OPM stitches them together and brings them to life.
+        </p>
+        <div class="steps">
+          <div class="step">
+            <h4>opm init</h4>
+            <p>Creates <code>paths/</code>, <code>components/schemas/</code>, and <code>components/securitySchemes/</code> with example files to start from.</p>
+          </div>
+          <div class="step">
+            <h4>Author in files</h4>
+            <p>Add a YAML file per path and per schema. Each piece of the API lives on its own, easy to diff and review.</p>
+          </div>
+          <div class="step">
+            <h4>opm build</h4>
+            <p>Gathers <code>info.yaml</code>, every path, and every schema into a single generated <code>openapi.yaml</code>.</p>
+          </div>
+          <div class="step">
+            <h4>opm serve</h4>
+            <p>Spins up a mock REST API from the built spec — default port 3000, configurable with <code>--port</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- get started -->
+    <section class="block" id="start">
+      <div class="wrap">
+        <div class="eyebrow">Get started</div>
+        <h2>Install once, scaffold in seconds.</h2>
+        <p class="sub">Works with both npm and Bun. Install globally, then drive your project with three subcommands.</p>
+        <div class="code" style="margin-top: 32px; max-width: 720px">
+          <div class="top">
+            <span>terminal</span>
+            <button class="copy" data-copy>Copy</button>
+          </div>
+          <pre data-code><span class="c"># install globally (npm)</span>
+npm install -g opm
+<span class="c"># …or with Bun</span>
+bun install -g opm
+
+<span class="c"># 1. scaffold a new project</span>
+opm init petstore
+
+<span class="c"># 2. build the final openapi.yaml</span>
+opm build
+
+<span class="c"># 3. serve a mock API (defaults to port 3000)</span>
+opm serve --port 3000</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- cta band -->
+    <section class="band">
+      <div class="wrap">
+        <h2>Keep your API spec tidy.</h2>
+        <p>Open source under the MIT License. Author in small files, build one spec, and mock it instantly.</p>
+        <div class="cta">
+          <a class="btn primary" href="docs.html">Read the docs</a>
+          <a class="btn ghost" href="https://github.com/wess/opm">Star it on GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <a class="brand" href="index.html"><span class="mark">⬡</span> OPM</a>
+        <div class="links">
+          <a href="docs.html">Docs</a>
+          <a href="#start">Get started</a>
+          <a href="https://github.com/wess/opm">GitHub</a>
+        </div>
+        <span>MIT · © 2026</span>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
