@@ -54,3 +54,5 @@ By default, the server runs on port 3000.
 ## License
 
 This project is licensed under the MIT License.
+
+♥ [Sponsor this project](https://github.com/sponsors/wess)
